@@ -1,0 +1,16 @@
+<Alloy>
+	<View id="index">
+		<ScrollableView id="scrollableView" scrollingEnabled="false" />
+		<View id="scrollLeftContainer">
+			<Button id="scrollLeftButton" />
+		</View>
+		<View id="scrollRightContainer">
+			<Button id="scrollRightButton" />
+		</View>
+
+		<View id="thumbsViewer">
+			<ScrollView id="thumbsContainer" />
+		</View>
+		<ImageView id="thumbsButton" />
+	</View>
+</Alloy>

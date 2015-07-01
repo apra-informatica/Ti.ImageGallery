@@ -1,0 +1,15 @@
+{
+	"id": "it.apra.tiimagegallery",
+	"name": "Ti.ImageGallery",
+	"description" : "Image gallery widget for Appcelerator Titanium",
+	"author": "Mauro Piccotti",
+	"version": "1.0.0",
+	"copyright":"Copyright (c) 2015",
+	"min-alloy-version": "1.0",
+	"min-titanium-version":"4.0",
+	"tags":"image,viewer,gallery",
+	"platforms":"android,ios",
+	"dependencies":{
+		"it.apra.tiimageviewer":"1.0"
+	}
+}

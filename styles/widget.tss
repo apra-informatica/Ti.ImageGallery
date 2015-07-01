@@ -1,0 +1,48 @@
+"#scrollableView": {
+	top: "0dp",
+	bottom: "0dp",
+	left : "0dp",
+	right : "0dp"
+},
+"#scrollLeftContainer": {
+	top: "50dp",
+	bottom: "0dp",
+	left: "0dp",
+	width: "44dp"
+},
+"#scrollRightContainer": {
+	top: "50dp",
+	bottom: "0dp",
+	right: "0dp",
+	width: "44dp"
+},
+"#scrollLeftButton": {
+	width: "44dp",
+	height: "44dp",
+	backgroundImage: WPATH("/images/btn_move_left.png")
+},
+"#scrollRightButton": {
+	width: "44dp",
+	height: "44dp",
+	backgroundImage: WPATH("/images/btn_move_right.png")
+},
+"#thumbsButton": {
+	bottom: "10dp",
+	right: "10dp",
+	width: "60dp",
+	height: "60dp"
+},
+"#thumbsViewer": {
+	left: "150dp",
+	right: "150dp",
+	bottom: "0dp",
+	height: "160dp"
+},
+"#thumbsContainer": {
+	layout: "horizontal",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL
+},
+"#thumbsContainer[platform=android]": {
+	scrollType: "horizontal"
+}
