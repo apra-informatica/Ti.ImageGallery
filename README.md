@@ -6,6 +6,8 @@ Images are zoomable, scrollable and pinchable on iOS and Android.
 
 It uses https://github.com/apra-informatica/Ti.ImageViewer, which uses module org.iotashan.TiTouchImageView (on Android), and both these widget and module should be installed.
 
+![image](docs/screenshot1.png?raw=true)
+
 ## Installation
 
 Add in your *config.json*, under `dependencies`:
