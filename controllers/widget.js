@@ -56,7 +56,7 @@ createEmptyView = function(params){
 	return view;
 };
 createLoadingView = function(){
-	var wrapper, spinnerImages;
+	var wrapper, spinner, spinnerImages;
 	
 	wrapper = Ti.UI.createView({'layout' : 'composite', 'width' : Ti.UI.FILL, 'height': Ti.UI.FILL, 'backgroundColor' : backgroundColor});
 	
