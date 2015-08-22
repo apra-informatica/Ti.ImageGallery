@@ -1,7 +1,7 @@
 # Ti.ImageGallery
 Image gallery widget for Appcelerator Titanium
 
-With this image gallery it's possible to show a sequence of images, scrolling them by lateral buttons or using a simple "navigation" panel of thumbnails.
+With this image gallery it's possible to show a sequence of local images, scrolling them by lateral buttons or using a simple "navigation" panel of thumbnails.
 Images are zoomable, scrollable and pinchable on iOS and Android.
 
 It uses https://github.com/apra-informatica/Ti.ImageViewer, which uses module org.iotashan.TiTouchImageView (on Android), and both these widget and module should be installed.
@@ -60,7 +60,7 @@ gallery = Alloy.createWidget('it.apra.tiimagegallery', {
 * **thumbsDefaultImage**: Optional image used as placeholder while thumbs are downloading
 * **thumbsOpacity**: Optional opacity of thumbnails view (default 0.9)
 * **thumbsDefaultDown**: If true keep down the thumbnails view as default
-* **thumbsHided**: If true hide thumbnails view (as default hided only in case of handheld device)
+* **thumbsHidden**: If true hide thumbnails view (as default hided only in case of handheld device)
 * **showMultiple**: If false only first image is showed
 
 **Functions**

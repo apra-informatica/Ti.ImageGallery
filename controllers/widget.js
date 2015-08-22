@@ -8,17 +8,17 @@ var args = arguments[0] || {},
 	thumbsDefaultImage = args.thumbsDefaultImage,
 	thumbsOpacity = args.thumbsOpacity || 0.9,
 	thumbsDefaultDown = args.thumbsDefaultDown || false,
-	thumbsHided = !_.isUndefined(args.thumbsHided) ? args.thumbsHided : Alloy.isHandheld,
+	thumbsHidden = !_.isUndefined(args.thumbsHidden) ? args.thumbsHidden : Alloy.isHandheld,
 	showMultiple = !_.isUndefined(args.showMultiple) ? args.showMultiple : true;
 
 var imageViewers, createEmptyView, createLoadingView, createViewer, updateView, loadView,
 	showPage, scrollLeftContainerClick, scrollRightContainerClick, thumbsViewerToggle, thumbsViewerSwipe,
-	isThumbsViewerVisible, removeEventListeners, showThumbsAnimation, hideThumbsAnimation, thumbsViewerBottomHided,
+	isThumbsViewerVisible, removeEventListeners, showThumbsAnimation, hideThumbsAnimation, thumbsViewerBottomHidden,
 	thumbsViewerBottomShowed, thumbsViewerShow, thumbsViewerHide, thumbsButtonImageOpen, thumbsButtonImageClose;
 
 imageViewers = [];
 
-thumbsViewerBottomHided = "-160dp";
+thumbsViewerBottomHidden = "-160dp";
 thumbsViewerBottomShowed = "0dp";
 
 showThumbsAnimation = Ti.UI.createAnimation({
@@ -26,7 +26,7 @@ showThumbsAnimation = Ti.UI.createAnimation({
 	'duration': 300
 });
 hideThumbsAnimation = Ti.UI.createAnimation({
-	'bottom': thumbsViewerBottomHided,
+	'bottom': thumbsViewerBottomHidden,
 	'duration': 300
 });
 thumbsButtonImageOpen = WPATH("/images/btn_open_thumbs.png");
@@ -92,7 +92,7 @@ createViewer = function(index, filepath, filename, description){
 		'title' : filename,
 		'subtitle' : description,
 		'backgroundColor' : backgroundColor,
-		'lowerInfoHided' : viewerParams.lowerInfoHided
+		'lowerInfoHidden' : viewerParams.lowerInfoHidden
 	});
 	
 	return Widget.createWidget('it.apra.tiimageviewer', params);
@@ -183,7 +183,7 @@ $.scrollRightContainer.addEventListener('click', scrollRightContainerClick);
 
 thumbsViewerHide = function(){
 	$.thumbsViewer.animate(hideThumbsAnimation, function(){
-		$.thumbsViewer.bottom = thumbsViewerBottomHided;
+		$.thumbsViewer.bottom = thumbsViewerBottomHidden;
 		$.thumbsButton.backgroundImage = thumbsButtonImageOpen;
 	});
 };
@@ -225,7 +225,7 @@ removeEventListeners = function(){
 };
 
 if (thumbsDefaultDown){
-	$.thumbsViewer.bottom = thumbsViewerBottomHided;
+	$.thumbsViewer.bottom = thumbsViewerBottomHidden;
 	$.thumbsButton.backgroundImage = thumbsButtonImageOpen;
 } else {
 	$.thumbsViewer.bottom = thumbsViewerBottomShowed;
@@ -237,7 +237,7 @@ _.each(imagesData, function(imageData, imageIndex){
 });
 $.scrollableView.currentPage = currentPage;
 
-if (imagesData.length <= 1 || thumbsHided){
+if (imagesData.length <= 1 || thumbsHidden){
 	$.thumbsViewer.visible = false;
 	$.thumbsButton.visible = false;
 } else {
