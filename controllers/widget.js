@@ -1,6 +1,6 @@
 var args = arguments[0] || {},
 	imagesData = args.imagesData || [],
-	currentPage = args.currentPage || 0,
+	firstPage = args.currentPage || 0,
 	viewerParams = args.viewerParams || {},
 	backgroundColor = args.backgroundColor || 'black',
 	emptyViewLabelParams = args.emptyViewLabelParams,
@@ -11,7 +11,7 @@ var args = arguments[0] || {},
 	thumbsHidden = !_.isUndefined(args.thumbsHidden) ? args.thumbsHidden : Alloy.isHandheld,
 	showMultiple = !_.isUndefined(args.showMultiple) ? args.showMultiple : true;
 
-var imageViewers, createEmptyView, createLoadingView, createViewer, updateView, loadView,
+var imageViewers, createEmptyView, createLoadingView, createViewer, updateView, loadView, getCurrentPage,
 	showPage, scrollLeftContainerClick, scrollRightContainerClick, thumbsViewerToggle, thumbsViewerSwipe,
 	isThumbsViewerVisible, removeEventListeners, showThumbsAnimation, hideThumbsAnimation, thumbsViewerBottomHidden,
 	thumbsViewerBottomShowed, thumbsViewerShow, thumbsViewerHide, thumbsButtonImageOpen, thumbsButtonImageClose;
@@ -38,6 +38,10 @@ if (!showMultiple && imagesData.length > 1){
 	Ti.API.info("Truncating images, showing only first in priority");
 	imagesData = [imagesData[0]];
 }
+
+getCurrentPage = function(){
+	return $.scrollableView.currentPage;
+};
 
 createEmptyView = function(params){
 	params = params || {};
@@ -172,12 +176,12 @@ isThumbsViewerVisible = function(){
 };
 
 scrollLeftContainerClick = function(){
-	showPage($.scrollableView.currentPage - 1);
+	showPage(getCurrentPage() - 1);
 };
 $.scrollLeftContainer.addEventListener('click', scrollLeftContainerClick);
 
 scrollRightContainerClick = function(){
-	showPage($.scrollableView.currentPage + 1);
+	showPage(getCurrentPage() + 1);
 };
 $.scrollRightContainer.addEventListener('click', scrollRightContainerClick);
 
@@ -235,7 +239,7 @@ if (thumbsDefaultDown){
 _.each(imagesData, function(imageData, imageIndex){
 	$.scrollableView.addView(createEmptyView());
 });
-$.scrollableView.currentPage = currentPage;
+$.scrollableView.currentPage = firstPage;
 
 if (imagesData.length <= 1 || thumbsHidden){
 	$.thumbsViewer.visible = false;
@@ -260,7 +264,7 @@ if (imagesData.length <= 1 || thumbsHidden){
 			'height': "150dp"
 		});
 		imageView.addEventListener('singletap', function(){
-			if (itemIndex !== $.scrollableView.currentPage){
+			if (itemIndex !== getCurrentPage()){
 				showPage(itemIndex);
 			}
 		});
@@ -275,8 +279,9 @@ if (imagesData.length <= 1 || thumbsHidden){
 	});
 }
 
-showPage(currentPage);
+showPage(firstPage);
 
 
 exports.removeEventListeners = removeEventListeners;
 exports.isThumbsViewerVisible = isThumbsViewerVisible;
+exports.getCurrentPage = getCurrentPage;
